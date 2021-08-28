@@ -63,12 +63,14 @@ def gInvertArea(x, y, w, h): #/oled/gInvertArea 3 3 $1 121 9
     global s
     global screen
 
-    gFlip()
     inv = pygame.Surface((w, h), pygame.SRCALPHA)
     inv.fill((255,255,255,255))
     inv.blit(s, (- x, -y), None, pygame.BLEND_RGB_SUB)
     s.blit(inv, (x, y), None)
-    gFlip()
+    
+def gInvert(doit): #/oled/gInvert 3 1
+    if doit:
+        gInvertArea(0, 0, 128, 64)
 
 def gInvertLine(n): #/oled/gInvertLine 0
     if n == 0:
@@ -163,27 +165,38 @@ def gDrawInfoBar(inL, inR, outL, outR):
         gFillArea((i * 5) + 73, 4, 3, 4, 1);
 
     gFlip()
+    
+def gWaveform(blob):
+    i = 0
+    last = 63 - blob[0]
+    while i < 127:
+        j=i+1
+        up = 63 - blob[j]
+        gLine(i, last, j, up, 1)
+        last = up
+        i = j
 
 GDRAW = pygame.event.custom_type()
 
 def gDrawevent(dummy, func, *args):
-    pygame.event.post(pygame.event.Event(GDRAW, { 'func': func[0], 'args': args}))
+    pygame.event.post(pygame.event.Event(GDRAW, { 'func': func[0], 'args': args[1:]}))
 
 dispatcher = dispatcher.Dispatcher()
-dispatcher.map("/gClear", gDrawevent, gClear)
-dispatcher.map("/gFlip", gDrawevent, gFlip)
-dispatcher.map("/gSetPixel", gDrawevent, gSetPixel)
-dispatcher.map("/gLine", gDrawevent, gLine)
-dispatcher.map("/gBox", gDrawevent, gBox)
-dispatcher.map("/gFillArea", gDrawevent, gFillArea)
-dispatcher.map("/gCircle", gDrawevent, gCircle)
-dispatcher.map("/gFilledCircle", gDrawevent, gFilledCircle)
-dispatcher.map("/gPrintln", gDrawevent, gPrintln)
-dispatcher.map("/gCleanln", gDrawevent, gCleanln)
-dispatcher.map("/gInvertArea", gDrawevent, gInvertArea)
-dispatcher.map("/gInvertLine", gDrawevent, gInvertLine)
-dispatcher.map("/gDrawInfoBar", gDrawevent, gDrawInfoBar)
-
+dispatcher.map("/oled/gClear", gDrawevent, gClear)
+dispatcher.map("/oled/gFlip", gDrawevent, gFlip)
+dispatcher.map("/oled/gSetPixel", gDrawevent, gSetPixel)
+dispatcher.map("/oled/gLine", gDrawevent, gLine)
+dispatcher.map("/oled/gBox", gDrawevent, gBox)
+dispatcher.map("/oled/gFillArea", gDrawevent, gFillArea)
+dispatcher.map("/oled/gCircle", gDrawevent, gCircle)
+dispatcher.map("/oled/gFilledCircle", gDrawevent, gFilledCircle)
+dispatcher.map("/oled/gPrintln", gDrawevent, gPrintln)
+dispatcher.map("/oled/gCleanln", gDrawevent, gCleanln)
+dispatcher.map("/oled/gInvert", gDrawevent, gInvert)
+dispatcher.map("/oled/gInvertArea", gDrawevent, gInvertArea)
+dispatcher.map("/oled/gInvertLine", gDrawevent, gInvertLine)
+dispatcher.map("/oled/gDrawInfoBar", gDrawevent, gDrawInfoBar)
+dispatcher.map("/oled/gWaveform", gDrawevent, gWaveform)
 
 server = osc_server.ThreadingOSCUDPServer(("localhost", 3000), dispatcher)
 print("Serving on {}".format(server.server_address))
