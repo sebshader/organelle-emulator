@@ -63,10 +63,12 @@ def gInvertArea(x, y, w, h): #/oled/gInvertArea 3 3 $1 121 9
     global s
     global screen
 
+    gFlip()
     inv = pygame.Surface((w, h), pygame.SRCALPHA)
     inv.fill((255,255,255,255))
     inv.blit(s, (- x, -y), None, pygame.BLEND_RGB_SUB)
     s.blit(inv, (x, y), None)
+    gFlip()
     
 def gInvert(doit): #/oled/gInvert 3 1
     if doit:
@@ -91,7 +93,7 @@ def gPrintln(x, y, size, c, *txtToPrint):
     txt = ""
 
     for word in txtToPrint:
-        if type(word) == float:
+        if type(word) == float or type(word) == int:
             word = str(int(word))
         txt = txt + word + " " 
 
