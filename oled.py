@@ -76,15 +76,15 @@ def gInvert(doit): #/oled/gInvert 3 1
 
 def gInvertLine(n): #/oled/gInvertLine 0
     if n == 0:
-        gInvertArea(0, 8, 128, 9)
+        gInvertArea(0, 8, 128, 12)
     elif n == 1:
-        gInvertArea(0, 20, 128, 9)
+        gInvertArea(0, 20, 128, 11)
     elif n == 2:
-        gInvertArea(0, 32, 128, 9)
+        gInvertArea(0, 31, 128, 11)
     elif n == 3:
-        gInvertArea(0, 44, 128, 9)
+        gInvertArea(0, 42, 128, 11)
     elif n == 4:
-        gInvertArea(0, 56, 128, 9)
+        gInvertArea(0, 53, 128, 11)
 
 def gPrintln(x, y, size, c, *txtToPrint):
     global s
@@ -108,15 +108,15 @@ def gPrintln(x, y, size, c, *txtToPrint):
 
 def gCleanln(n):
     if n == 1:
-        gFillArea(0, 8, 128, 9, 0)
+        gFillArea(0, 8, 128, 12, 0)
     elif n == 2:
-        gFillArea(0, 20, 128, 9, 0)
+        gFillArea(0, 20, 128, 11, 0)
     elif n == 3:
-        gFillArea(0, 32, 128, 9, 0)
+        gFillArea(0, 31, 128, 11, 0)
     elif n == 4:
-        gFillArea(0, 44, 128, 9, 0)
+        gFillArea(0, 42, 128, 11, 0)
     elif n == 5:
-        gFillArea(0, 56, 128, 9, 0)
+        gFillArea(0, 53, 128, 11, 0)
 
 def gDrawInfoBar(inL, inR, outL, outR):
     global s
