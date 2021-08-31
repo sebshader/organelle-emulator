@@ -3,7 +3,7 @@
 #X obj 100 100 cnv 15 400 150 empty empty empty 20 12 0 14 #68a8b4
 #000000 0;
 #X obj 115 117 vsl 20 40 0 1 0 0 knob1 knob1 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 3400 1;
+#fcfcfc #dcdcdc 1800 1;
 #X obj 115 207 cnv 8 8 8 empty led-canvas empty 20 12 0 14 #606060
 #fcfcfc 0;
 #X obj 173 221 tgl 20 0 key3 key3 X 6 10 1 13 #f8c44c #805400 #eca444
@@ -57,13 +57,13 @@
 #X obj 109 221 tgl 20 0 aux aux A 6 10 1 14 #f8c44c #805400 #eca444
 0 1;
 #X obj 150 117 vsl 20 40 0 1 0 0 knob2 knob2 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 2600 1;
+#fcfcfc #dcdcdc 2000 1;
 #X obj 185 117 vsl 20 40 0 1 0 0 knob3 knob3 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 3600 1;
+#fcfcfc #dcdcdc 3000 1;
 #X obj 220 117 vsl 20 40 0 1 0 0 knob4 knob4 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 700 1;
+#fcfcfc #dcdcdc 2300 1;
 #X obj 465 117 vsl 20 40 0 1 0 0 vol vol empty 2 -9 1 10 #202020 #fcfcfc
-#dcdcdc 0 1;
+#dcdcdc 3400 1;
 #N canvas 440 129 681 716 led 0;
 #X msg 69 429 \; led-canvas color \$1 0;
 #X obj 68 335 sel 0 1 2 3 4 5 6 7, f 63;
@@ -193,7 +193,7 @@
 #X obj 427 20 kFilter 56;
 #X obj 446 56 kFilter 48;
 #X obj 435 37 kFilter 57;
-#N canvas 74 123 1366 725 keyboard 0;
+#N canvas 74 267 1366 725 keyboard 0;
 #X obj 156 442 s key1;
 #X text 195 401 z;
 #X text 295 400 x;
@@ -365,11 +365,11 @@
 #X obj 103 59 change;
 #X obj 103 80 sel 1;
 #X obj 103 103 tgl 20 0 empty empty Esc 1 11 1 11 #9c9c9c #404040 #606060
-1 1;
+0 1;
 #X text 123 100 desktop;
 #X text 123 109 keyboard;
 #X obj 103 202 s keyboardIsOn;
-#X obj 171 102 cnv 5 5 5 empty keyboard-canvas empty 20 12 0 14 #14e814
+#X obj 171 102 cnv 5 5 5 empty keyboard-canvas empty 20 12 0 14 #fc2828
 #404040 0;
 #X msg 211 190 \; keyboard-canvas color \$1 0;
 #X obj 211 150 sel 0 1;

@@ -1,4 +1,4 @@
-#N canvas 616 217 1362 691 10;
+#N canvas 78 187 1362 691 10;
 #X obj 70 25 key;
 #X obj 125 25 keyup;
 #X obj 70 206 change;
@@ -20,6 +20,7 @@
 #X obj 70 76 spigot;
 #X obj 205 28 r keyboardIsOn;
 #X obj 304 111 r panic;
+#X obj 361 480 s notesRaw;
 #X connect 0 0 18 0;
 #X connect 1 0 17 0;
 #X connect 2 0 5 0;
@@ -36,6 +37,7 @@
 #X connect 13 0 15 0;
 #X connect 14 0 13 1;
 #X connect 15 0 9 0;
+#X connect 15 0 21 0;
 #X connect 16 0 14 0;
 #X connect 17 0 7 0;
 #X connect 18 0 6 0;
