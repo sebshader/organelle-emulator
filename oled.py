@@ -38,7 +38,7 @@ def gBox(x1, y1, x2, y2, c):
     global s
     pygame.draw.rect(s, (255,255,255) if c == 1 else (32,32,32), (x1, y1, x2, y2), 1)
 
-def gFillArea(x1, y1, x2, y2, c):
+def gFillArea(x1, y1, x2, y2, c=0):
     global s
     pygame.draw.rect(s, (255,255,255) if c == 1 else (32,32,32), (x1, y1, x2, y2), 0)
 
@@ -62,8 +62,12 @@ def gFlip():
 def gInvertArea(x, y, w, h): #/oled/gInvertArea 3 3 $1 121 9
     global s
     global screen
-
+    if w < 0 or w > 128:
+        w = 128
+    if h < 0 or h > 64:
+        h = 64
     gFlip()
+    #print("w = " + str(w) + ", h = " + str(h))
     inv = pygame.Surface((w, h), pygame.SRCALPHA)
     inv.fill((255,255,255,255))
     inv.blit(s, (- x, -y), None, pygame.BLEND_RGB_SUB)
