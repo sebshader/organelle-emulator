@@ -1,9 +1,9 @@
-#N canvas 149 302 426 190 10;
+#N canvas 30 403 426 190 10;
 #N canvas 352 261 912 507 organelle 0;
 #X obj 100 100 cnv 15 400 150 empty empty empty 20 12 0 14 #68a8b4
 #000000 0;
 #X obj 115 117 vsl 20 40 0 1 0 0 knob1 knob1 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 1800 1;
+#fcfcfc #dcdcdc 0 1;
 #X obj 115 207 cnv 8 8 8 empty led-canvas empty 20 12 0 14 #606060
 #fcfcfc 0;
 #X obj 173 221 tgl 20 0 key3 key3 X 6 10 1 13 #f8c44c #805400 #eca444
@@ -57,13 +57,13 @@
 #X obj 109 221 tgl 20 0 aux aux A 6 10 1 14 #f8c44c #805400 #eca444
 0 1;
 #X obj 150 117 vsl 20 40 0 1 0 0 knob2 knob2 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 2000 1;
+#fcfcfc #dcdcdc 2500 1;
 #X obj 185 117 vsl 20 40 0 1 0 0 knob3 knob3 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 3000 1;
+#fcfcfc #dcdcdc 0 1;
 #X obj 220 117 vsl 20 40 0 1 0 0 knob4 knob4 empty 2 -9 1 10 #202020
-#fcfcfc #dcdcdc 2300 1;
+#fcfcfc #dcdcdc 3900 1;
 #X obj 465 117 vsl 20 40 0 1 0 0 vol vol empty 2 -9 1 10 #202020 #fcfcfc
-#dcdcdc 3400 1;
+#dcdcdc 2925 1;
 #N canvas 440 129 681 716 led 0;
 #X msg 69 429 \; led-canvas color \$1 0;
 #X obj 68 335 sel 0 1 2 3 4 5 6 7, f 63;
@@ -78,6 +78,9 @@
 #X msg 200 374 17;
 #X msg 251 377 13;
 #X msg 307 377 15;
+#X obj 182 238 % 8;
+#X obj 182 187 r led;
+#X obj 232 185 r quitting;
 #X connect 1 0 7 0;
 #X connect 1 1 8 0;
 #X connect 1 2 9 0;
@@ -97,6 +100,9 @@
 #X connect 10 0 0 0;
 #X connect 11 0 0 0;
 #X connect 12 0 0 0;
+#X connect 13 0 1 0;
+#X connect 14 0 13 0;
+#X connect 15 0 7 0;
 #X restore 570 163 pd led;
 #N canvas 592 335 730 325 init 0;
 #X obj 52 32 loadbang;

@@ -50,7 +50,7 @@ def gFilledCircle(x, y, size, c):
     global s
     pygame.draw.circle(s, (255,255,255) if c == 1 else (32,32,32), (int(x), int(y)), int(size), 0)
 
-def gFlip():
+def gFlip(unused=1):
     global s
     global screen
 
@@ -66,13 +66,12 @@ def gInvertArea(x, y, w, h): #/oled/gInvertArea 3 3 $1 121 9
         w = 128
     if h < 0 or h > 64:
         h = 64
-    gFlip()
     #print("w = " + str(w) + ", h = " + str(h))
+    gFlip()
     inv = pygame.Surface((w, h), pygame.SRCALPHA)
     inv.fill((255,255,255,255))
     inv.blit(s, (- x, -y), None, pygame.BLEND_RGB_SUB)
     s.blit(inv, (x, y), None)
-    gFlip()
     
 def gInvert(doit): #/oled/gInvert 3 1
     if doit:
@@ -97,8 +96,10 @@ def gPrintln(x, y, size, c, *txtToPrint):
     txt = ""
 
     for word in txtToPrint:
-        if type(word) == float or type(word) == int:
+        if type(word) == int:
             word = str(int(word))
+        elif type(word) == float:
+            word = str(float(word))
         txt = txt + word + " " 
 
     if size == 8:
